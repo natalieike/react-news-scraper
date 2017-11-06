@@ -1,1 +1,1 @@
-# react-news-scraper
+# react-nytimes
