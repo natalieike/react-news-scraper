@@ -19,20 +19,15 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-//I can't figure out why remove doesn't work - it's not pulling the comment id out of the array in Article
   remove: function(req, res) {
-    db.Comment
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(data => db.Article
-        .findOne({comments: req.params.id})
-        .then(dbModel => {
-          commentsArray = dbModel.comments;
-          index = commentsArray.indexOf(req.params.id);
-          commentsArray.splice(index, 1);
-          console.log(dbModel._id + " " + req.params.id);
-          db.Article.findOneAndUpdate({_id: dbModel._id}, {$pull: {comments: req.params.id}},{ new: true })}))
-      .then(result => res.json(result))
-      .catch(err => res.status(422).json(err));
-  }
+    const commentId = req.params.id;
+    db.Article
+      .findOneAndUpdate({comments: commentId}, {$pull: {comments: commentId}})
+      .then(data => {
+        db.Comment
+          .findById({_id: commentId})
+          .then(dbModel => dbModel.remove())
+      }).then(result => res.json(result))
+      .catch(err => res.status(422).json(err)); 
+  }  
 };
