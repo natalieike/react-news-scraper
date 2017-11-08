@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import Navpills from "./components/Navpills";
+import Search from "./components/pages/Search";
+import Comment from "./components/pages/Comment";
+import API from "./utils/API"
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router>
+        <div className="container">
+          <Navpills />
+          <Redirect exact from="/" to="/search"/>
+          <Route path="/search" render={() => <Search />} />
+          <Route path="/comment" render={() => <Comment />} />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      </Router>
     );
   }
 }
