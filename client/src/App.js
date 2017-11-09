@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Navpills from "./components/Navpills";
 import Search from "./components/pages/Search";
 import Comment from "./components/pages/Comment";
-import API from "./utils/API"
 
 class App extends Component {
   render() {

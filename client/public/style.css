@@ -1,3 +1,7 @@
 .datePickerDiv{
-	width: 30%;
+	margin-right: 1%;
+}
+
+.panelDate{
+	font-size: 10px;
 }

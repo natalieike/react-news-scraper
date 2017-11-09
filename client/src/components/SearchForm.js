@@ -1,12 +1,14 @@
 import React from "react";
-import DatePicker from 'react-date-picker';
+import DatePicker from 'react-datepicker';
+ 
+import 'react-datepicker/dist/react-datepicker.css';
 
 const SearchForm = props => 
   <form>
     <div className="form-group">
-      <label htmlFor="searchTerms">Search:</label>
+      <label htmlFor="searchTerms"><h4>Search Keywords:</h4></label>
       <input
-        onChange={props.handleInputChange}
+        onChange={props.handleSearchChange}
         value={props.searchValue}
         name="searchTerms"
         type="text"
@@ -14,16 +16,23 @@ const SearchForm = props =>
         placeholder="Search for Keywords in an Article"
         id="searchTerms"
       />
-      <br />
-      <div>
+      <h4>Articles from What Date Range:</h4>
+      <div className="pull-left datePickerDiv">
+        <label>Start Date:</label>
         <DatePicker
-            onChange={props.onDateChange}
-            value={props.dateValue}
-            calendarClassName="datePickerDiv"
+          selected={props.startDate}
+          onChange={props.handleStartChange}
+        />
+      </div>
+      <div>
+        <label>End Date:</label>
+        <DatePicker
+          selected={props.endDate}
+          onChange={props.handleEndChange}
         />
       </div>
       <br />
-      <button onClick={props.handleFormSubmit} className="btn btn-primary">
+      <button onClick={props.onSubmit} className="btn btn-primary">
         Search
       </button>
     </div>
