@@ -1,7 +1,8 @@
 import axios from "axios";
 import keys from "./keys";
 const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-let queryBase = `&api-key=${keys.apiKey}`
+let key = process.env.NYTKey || keys.apiKey;
+let queryBase = `&api-key=${key}`
 
 export default {
   search: function(query) {
