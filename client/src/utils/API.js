@@ -6,7 +6,6 @@ let queryBase = `&api-key=${key}`
 
 export default {
   search: function(query) {
-    console.log(key);
     return axios.get(BASEURL + query + queryBase);
   },
   saveArticle: function(article) {
