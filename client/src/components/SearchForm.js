@@ -16,7 +16,7 @@ const SearchForm = props =>
         placeholder="Search for Keywords in an Article"
         id="searchTerms"
       />
-      <h4>Articles from What Date Range:</h4>
+     <h4>Articles from What Date Range:</h4>
       <div className="pull-left datePickerDiv">
         <label>Start Date:</label>
         <DatePicker
